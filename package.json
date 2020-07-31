@@ -1,0 +1,47 @@
+{
+  "name": "jfront-oauth",
+  "version": "0.1.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "devDependencies": {
+    "@babel/types": "^7.10.5",
+    "@babel/core": "^7.10.5",
+    "@babel/cli": "^7.10.5",
+    "@babel/traverse": "^7.10.5",
+    "@babel/preset-env": "^7.10.4",
+    "@babel/preset-react": "^7.10.4",
+    "@babel/preset-typescript": "^7.10.4",
+    "@testing-library/react": "^9.3.2",
+    "@types/react": "^16.9.0",
+    "@types/react-dom": "^16.9.0",
+    "@types/styled-components": "^5.0.1",
+    "babel-jest": "^26.1.0",
+    "jest": "^26.1.0",
+    "awesome-typescript-loader": "^5.2.1",
+    "path": "^0.12.7",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "rimraf": "^3.0.2",
+    "source-map-loader": "^1.0.0",
+    "typescript": "^3.9.5",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12",
+    "js-sha256": "0.9.0",
+    "js-chacha20": "1.1.0",
+    "js-base64": "3.3.3",
+    "axios": "0.19.2"
+  },
+  "peerDependencies": {
+    "react": ">= 16.8.x",
+    "react-dom": ">= 16.8.x",
+    "styled-components": ">= 5.0.1",
+    "axios": ">= 0.19.2"
+  },
+  "scripts": {
+    "clean": "rimraf dist",
+    "test": "jest",
+    "build": "webpack --config webpack.config.js --mode production",
+    "copy-resources": "cpx \"src/**/*.!(ts|tsx)\" dist",
+    "clean-test-build": "npm run clean && npm run test && npm run build"
+  }
+}
