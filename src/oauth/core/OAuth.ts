@@ -38,7 +38,9 @@ export interface Storage {
   */
   setItem(key: string, value: string): void;
 }
-
+/**
+ * Реализация протокола OAuth
+ */
 export class OAuth {
   private clientId: string;
   private redirectUri: string;
@@ -46,6 +48,14 @@ export class OAuth {
   private storage: Storage;
   private tokenUrl: string;
 
+  /**
+   * 
+   * @param clientId ID приложения
+   * @param redirectUri URL переадресации
+   * @param authorizeUrl Base URL авторизации
+   * @param tokenUrl Base URL для получения токенов
+   * @param storage временное хранилище данных
+   */
   constructor(clientId: string, redirectUri: string, authorizeUrl: string, tokenUrl: string, storage: Storage) {
     this.clientId = clientId;
     this.redirectUri = redirectUri;
@@ -54,6 +64,11 @@ export class OAuth {
     this.tokenUrl = tokenUrl;
   }
 
+  /**
+   * Authorization Code/Implicit flow.
+   * @param responseType Тип ответа
+   * @param currentPath текущий URL приложения
+   */
   authorize = (responseType: string, currentPath: string): Promise<string> => {
     if (this.authorizeUrl) {
       let authRequest = new AuthorizationRequest(this.clientId, this.redirectUri, this.authorizeUrl, responseType, currentPath, this.storage);
@@ -63,16 +78,30 @@ export class OAuth {
     }
   }
 
+  /**
+   * Получение токена по авторизационному коду.
+   * @param authorizationCode 
+   * @param nonce 
+   */
   getTokenWithAuthCode = (authorizationCode: string, nonce: string): Promise<TokenResponse> => {
     const tokenRequest = new TokenRequest(this.clientId, this.redirectUri, this.tokenUrl, this.storage, nonce);
     return tokenRequest.withAuthorizationCode(authorizationCode);
   }
 
+  /**
+   * Обновление токена.
+   * @param refreshToken 
+   */
   refreshToken = (refreshToken: string): Promise<TokenResponse> => {
     const tokenRequest = new TokenRequest(this.clientId, this.redirectUri, this.tokenUrl, this.storage);
     return tokenRequest.withRefreshToken(refreshToken);
   }
 
+  /**
+   * Получение токена по логину/паролю токена.
+   * @param username 
+   * @param password 
+   */
   getTokenWithUserCredentials = (username: string, password: string): Promise<TokenResponse> => {
     const tokenRequest = new TokenRequest(this.clientId, this.redirectUri, this.tokenUrl, this.storage);
     return tokenRequest.withUserCredentials(username, password);

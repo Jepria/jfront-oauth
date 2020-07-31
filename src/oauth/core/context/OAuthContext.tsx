@@ -12,6 +12,9 @@ export interface SecurityContext {
   errorCode?: string;
 }
 
+/**
+ * OAuth security context instance
+ */
 export const OAuthContext = createContext<SecurityContext>({
   isLoading: false,
   authorize: () => {
@@ -19,7 +22,10 @@ export const OAuthContext = createContext<SecurityContext>({
   }
 });
 
-export const useOAuth = () => {
+/**
+ * Hook для подключения контекста OAuth
+ */
+export const useOAuth = (): SecurityContext => {
   const context = useContext(OAuthContext);
 
   useEffect(() => {
@@ -31,6 +37,10 @@ export const useOAuth = () => {
   return context;
 }
 
+/**
+ * HOC для подключения контекста OAuth
+ * @param WrappedComponent 
+ */
 export const withOAuth = (WrappedComponent: React.ComponentType) => {
   return class extends React.Component {
     static contextType = OAuthContext;

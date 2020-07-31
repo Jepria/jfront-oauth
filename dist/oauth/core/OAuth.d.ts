@@ -22,15 +22,45 @@ export interface Storage {
     */
     setItem(key: string, value: string): void;
 }
+/**
+ * Реализация протокола OAuth
+ */
 export declare class OAuth {
     private clientId;
     private redirectUri;
     private authorizeUrl;
     private storage;
     private tokenUrl;
+    /**
+     *
+     * @param clientId ID приложения
+     * @param redirectUri URL переадресации
+     * @param authorizeUrl Base URL авторизации
+     * @param tokenUrl Base URL для получения токенов
+     * @param storage временное хранилище данных
+     */
     constructor(clientId: string, redirectUri: string, authorizeUrl: string, tokenUrl: string, storage: Storage);
+    /**
+     * Authorization Code/Implicit flow.
+     * @param responseType Тип ответа
+     * @param currentPath текущий URL приложения
+     */
     authorize: (responseType: string, currentPath: string) => Promise<string>;
+    /**
+     * Получение токена по авторизационному коду.
+     * @param authorizationCode
+     * @param nonce
+     */
     getTokenWithAuthCode: (authorizationCode: string, nonce: string) => Promise<TokenResponse>;
+    /**
+     * Обновление токена.
+     * @param refreshToken
+     */
     refreshToken: (refreshToken: string) => Promise<TokenResponse>;
+    /**
+     * Получение токена по логину/паролю токена.
+     * @param username
+     * @param password
+     */
     getTokenWithUserCredentials: (username: string, password: string) => Promise<TokenResponse>;
 }

@@ -1,6 +1,10 @@
 import { OAuthState } from "../types";
 import { OAuthActionTypes, AUTHORIZATION_REQUEST, AUTHORIZATION_REQUEST_SUCCESS, AUTHORIZATION_REQUEST_FAILURE, TOKEN_REQUEST, TOKEN_REQUEST_SUCCESS, TOKEN_REQUEST_FAILURE } from "./actions";
-
+/**
+ * Базовый редьюсер OAuth.
+ * @param state 
+ * @param action 
+ */
 export const OAuthReducer = (state: OAuthState, action: OAuthActionTypes): OAuthState => {
   switch (action.type) {
     case AUTHORIZATION_REQUEST: {

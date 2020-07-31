@@ -20,4 +20,9 @@ export interface OAuthContextProps {
     configureAxios?: boolean;
     axiosInstance?: AxiosInstance;
 }
+/**
+ * Базовый Provider OAuth контекста. Не содержит реализаций платформозависимых методов. Они переведены в callback'и в props.
+ *
+ * @param param props
+ */
 export declare const OAuthContextProvider: React.FC<OAuthContextProps>;

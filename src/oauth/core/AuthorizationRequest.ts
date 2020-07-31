@@ -2,6 +2,9 @@ import { Storage } from "./OAuth";
 import * as Crypto from './OAuthCrypto';
 import { OAuthMeta } from "./types";
 
+/**
+ * Реализации Authorization Code Flow. Генерация Authorization URL для доступа к серверу авторизации.
+ */
 export class AuthorizationRequest {
   private clientId: string;
   private redirectUri: string;
@@ -11,6 +14,15 @@ export class AuthorizationRequest {
   private meta: OAuthMeta;
   private codeVerifier: string;
 
+  /**
+   * 
+   * @param clientId ID приложения
+   * @param redirectUri URL переадресации
+   * @param authorizeUrl Base URL авторизации
+   * @param responseType Тип ответа
+   * @param currentPath Текущий URL приложения
+   * @param storage временное хранилище данных
+   */
   constructor(clientId: string, redirectUri: string, authorizeUrl: string, responseType: string, currentPath: string, storage: Storage) {
     this.clientId = clientId;
     this.redirectUri = redirectUri;

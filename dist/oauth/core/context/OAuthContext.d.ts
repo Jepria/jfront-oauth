@@ -10,8 +10,18 @@ export interface SecurityContext {
     errorDescription?: string;
     errorCode?: string;
 }
+/**
+ * OAuth security context instance
+ */
 export declare const OAuthContext: React.Context<SecurityContext>;
+/**
+ * Hook для подключения контекста OAuth
+ */
 export declare const useOAuth: () => SecurityContext;
+/**
+ * HOC для подключения контекста OAuth
+ * @param WrappedComponent
+ */
 export declare const withOAuth: (WrappedComponent: React.ComponentType) => {
     new (props: Readonly<{}>): {
         componentDidMount(): void;

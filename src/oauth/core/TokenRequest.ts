@@ -2,6 +2,9 @@ import { Storage } from "./OAuth";
 import axios from 'axios';
 import { TokenResponse, OAuthMeta } from "./types";
 
+/**
+ * Получение токена от сервера авторизации.
+ */
 export class TokenRequest {
   private clientId: string;
   private redirectUri: string;
@@ -9,6 +12,14 @@ export class TokenRequest {
   private storage: Storage;
   private nonce?: string;
 
+  /**
+   * 
+   * @param clientId ID приложения
+   * @param redirectUri URL переадресации
+   * @param tokenUrl Base URL для получения токенов
+   * @param storage временное хранилище данных
+   * @param nonce случайная строка
+   */
   constructor(clientId: string, redirectUri: string, tokenUrl: string, storage: Storage, nonce?: string) {
     this.clientId = clientId;
     this.redirectUri = redirectUri;
@@ -17,6 +28,10 @@ export class TokenRequest {
     this.nonce = nonce;
   }
 
+  /**
+   * Получение токена по авторизационному коду.
+   * @param authorizationCode 
+   */
   withAuthorizationCode(authorizationCode: string): Promise<TokenResponse> {
     if (!this.nonce) {
       throw new Error("nonce is undefined");
@@ -42,6 +57,10 @@ export class TokenRequest {
     });
   }
 
+  /**
+   * Обновление токена.
+   * @param refreshToken 
+   */
   withRefreshToken(refreshToken: string): Promise<TokenResponse> {
     return new Promise<TokenResponse>((resolve, reject) => {
       axios.post(
@@ -59,6 +78,11 @@ export class TokenRequest {
     });
   }
 
+  /**
+   * Получение токена по логину/паролю токена.
+   * @param username 
+   * @param password 
+   */
   withUserCredentials(username: string, password: string): Promise<TokenResponse> {
     return new Promise<TokenResponse>((resolve, reject) => {
       axios.post(

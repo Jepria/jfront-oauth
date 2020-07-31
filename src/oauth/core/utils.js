@@ -3,7 +3,9 @@ import JSChaCha20 from "js-chacha20";
 /**
  * weakRand is used to generate start values.
  * It don't have to be "securely" random, but merely unpredictable. 
- * */
+ * 
+ * @param {number} size array size
+ */
 const weakRand = (size) => {
   let buf = new Uint8Array(size);
   for (let i = 0; i < size; i++) {
@@ -12,6 +14,11 @@ const weakRand = (size) => {
   return buf;
 }
 
+/**
+ * Generate random number with chacha20 pseudo generator
+ * 
+ * @param {number} size byte count
+ */
 export const getRandomValue = (size) => {
   const key = weakRand(32);
   const nonce = weakRand(12);
