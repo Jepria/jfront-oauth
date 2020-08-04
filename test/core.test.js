@@ -26,8 +26,8 @@ class TestStorage {
 
 test('OAuth authorization request url generation test', () => {
   const storage = new TestStorage();
-  const oauth = new OAuth("clientId", "http://localhost", "http://localhost/authorize", "http://localhost/token", storage);
-
+  const oauth = new OAuth("clientId", "http://localhost", "http://localhost/authorize", "http://localhost/token", "http://localhost/logout", storage);
+  
   oauth.authorize('code', "http://localhost")
     .then(result => expect(result).toBeDefined())
     .catch(error => expect(error).toBeUndefined());
@@ -35,7 +35,7 @@ test('OAuth authorization request url generation test', () => {
 
 test('OAuth token request test', () => {
   const storage = new TestStorage({ "asdasdfef33f2qf3f3fq3qfgwgw5ehhe6eh5": "{}" });
-  const oauth = new OAuth("clientId", "http://localhost", "http://localhost/authorize", "http://localhost/token", storage);
+  const oauth = new OAuth("clientId", "http://localhost", "http://localhost/authorize", "http://localhost/token", "http://localhost/logout", storage);
 
   const resp = {
     status: 200, data: {

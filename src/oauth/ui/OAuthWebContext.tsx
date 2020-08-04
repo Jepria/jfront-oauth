@@ -48,6 +48,10 @@ export const OAuthWebContext: React.FC<OAuthWebContextProps> = ({
     }
   }
 
+  const onLogout = (logoutUrl: string) => {
+    window.location.replace(logoutUrl);
+  }
+
   return (
     <OAuthContextProvider
       onAuthorizationRequest={onAuthorizationRequest}
@@ -60,7 +64,8 @@ export const OAuthWebContext: React.FC<OAuthWebContextProps> = ({
       oauthContextPath={oauthContextPath}
       axiosInstance={axiosInstance}
       configureAxios={configureAxios}
-      storage={window.sessionStorage}>
+      storage={window.sessionStorage}
+      onLogout={onLogout}>
       {children}
     </OAuthContextProvider>
   );

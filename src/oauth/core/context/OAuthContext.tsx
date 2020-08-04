@@ -2,6 +2,7 @@ import React, { createContext, useContext, useEffect } from 'react';
 
 export interface SecurityContext {
   authorize(): void,
+  logout?: () => void,
   accessToken?: string;
   expiresIn?: bigint;
   refreshToken?: string;

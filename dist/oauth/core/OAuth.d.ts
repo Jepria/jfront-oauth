@@ -29,8 +29,9 @@ export declare class OAuth {
     private clientId;
     private redirectUri;
     private authorizeUrl;
-    private storage;
+    private logoutUrl;
     private tokenUrl;
+    private storage;
     /**
      *
      * @param clientId ID приложения
@@ -39,7 +40,7 @@ export declare class OAuth {
      * @param tokenUrl Base URL для получения токенов
      * @param storage временное хранилище данных
      */
-    constructor(clientId: string, redirectUri: string, authorizeUrl: string, tokenUrl: string, storage: Storage);
+    constructor(clientId: string, redirectUri: string, authorizeUrl: string, tokenUrl: string, logoutUrl: string, storage: Storage);
     /**
      * Authorization Code/Implicit flow.
      * @param responseType Тип ответа
@@ -63,4 +64,5 @@ export declare class OAuth {
      * @param password
      */
     getTokenWithUserCredentials: (username: string, password: string) => Promise<TokenResponse>;
+    logout: (currentPath: string) => string;
 }

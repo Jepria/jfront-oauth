@@ -13,6 +13,7 @@ export interface OAuthContextProps {
     getQueryParams: () => OAuthQueryParams;
     redirect: (url: string) => void;
     getCurrentUrl: () => string;
+    onLogout: (logoutUrl: string) => void;
     storage: Storage;
     clientId: string;
     redirectUri: string;

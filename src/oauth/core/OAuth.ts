@@ -1,6 +1,7 @@
 import { AuthorizationRequest } from './AuthorizationRequest';
 import { TokenRequest } from './TokenRequest';
-import { TokenResponse } from './types';
+import { TokenResponse, OAuthMeta } from './types';
+import { getRandomString } from './OAuthCrypto';
 
 export const GrantType: { [id: string]: string; } = {
   'authorization_code': 'Authorization code',
@@ -45,8 +46,9 @@ export class OAuth {
   private clientId: string;
   private redirectUri: string;
   private authorizeUrl: string;
-  private storage: Storage;
+  private logoutUrl: string;
   private tokenUrl: string;
+  private storage: Storage;
 
   /**
    * 
@@ -56,12 +58,13 @@ export class OAuth {
    * @param tokenUrl Base URL для получения токенов
    * @param storage временное хранилище данных
    */
-  constructor(clientId: string, redirectUri: string, authorizeUrl: string, tokenUrl: string, storage: Storage) {
+  constructor(clientId: string, redirectUri: string, authorizeUrl: string, tokenUrl: string, logoutUrl: string, storage: Storage) {
     this.clientId = clientId;
     this.redirectUri = redirectUri;
     this.authorizeUrl = authorizeUrl;
-    this.storage = storage;
     this.tokenUrl = tokenUrl;
+    this.logoutUrl = logoutUrl;
+    this.storage = storage;
   }
 
   /**
@@ -105,6 +108,15 @@ export class OAuth {
   getTokenWithUserCredentials = (username: string, password: string): Promise<TokenResponse> => {
     const tokenRequest = new TokenRequest(this.clientId, this.redirectUri, this.tokenUrl, this.storage);
     return tokenRequest.withUserCredentials(username, password);
+  }
+
+  logout = (currentPath: string): string => {
+    const nonce = getRandomString(43);
+    const meta: OAuthMeta = {
+      currentPath: currentPath
+    }
+    this.storage.setItem(nonce, JSON.stringify(meta));
+    return this.logoutUrl + "?client_id=" + this.clientId + "&redirect_uri=" + encodeURIComponent(this.redirectUri) + "&state=" + nonce; 
   }
 }
 

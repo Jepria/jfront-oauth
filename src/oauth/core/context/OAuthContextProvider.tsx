@@ -19,6 +19,7 @@ export interface OAuthContextProps {
   getQueryParams: () => OAuthQueryParams;
   redirect: (url: string) => void;
   getCurrentUrl: () => string;
+  onLogout: (logoutUrl: string) => void;
   storage: Storage;
   clientId: string;
   redirectUri: string;
@@ -38,6 +39,7 @@ export const OAuthContextProvider: React.FC<OAuthContextProps> = ({
   getQueryParams,
   getCurrentUrl,
   redirect,
+  onLogout,
   storage,
   clientId,
   redirectUri,
@@ -60,7 +62,7 @@ export const OAuthContextProvider: React.FC<OAuthContextProps> = ({
     errorCode
   }, dispatch] = useReducer(OAuthReducer, { isLoading: true })
 
-  const oauth = new OAuth(clientId, redirectUri, oauthContextPath + "/authorize", oauthContextPath + "/token", storage);
+  const oauth = new OAuth(clientId, redirectUri, oauthContextPath + "/authorize", oauthContextPath + "/token", oauthContextPath + "/logout", storage);
 
   const authorize = () => {
     if (!isOAuthCallback()) {
@@ -111,17 +113,32 @@ export const OAuthContextProvider: React.FC<OAuthContextProps> = ({
         dispatch(authorizationRequestFailure(queryParams.error, queryParams.errorDescription ? queryParams.errorDescription : undefined));
         return;
       }
-      if (!queryParams.authorizationCode) {
-        dispatch(authorizationRequestFailure("INVALID_REQUEST", "Empty authorization code"));
-        return;
-      }
       if (!queryParams.state) {
         dispatch(authorizationRequestFailure("INVALID_REQUEST", "Empty state"));
+        return;
+      }
+      if (!queryParams.authorizationCode && queryParams.state) {
+        const metaString = storage.getItem(queryParams.state);
+        if (metaString) {
+          const meta: OAuthMeta = JSON.parse(metaString);
+          if (meta.currentPath) {
+            redirect(meta.currentPath)
+          }
+        }
+        dispatch(authorizationRequestFailure("INVALID_REQUEST", "Invalid state"));
+        return;
+      }
+      if (!queryParams.authorizationCode) {
+        dispatch(authorizationRequestFailure("INVALID_REQUEST", "Authorization code is empty"));
         return;
       }
       dispatch(authorizationRequestSuccess(queryParams.authorizationCode, queryParams.state));
     }
   }, [])
+
+  const logout = () => {
+    onLogout(oauth.logout(getCurrentUrl()));
+  }
 
   useEffect(() => {
     if (configureAxios && accessToken) {
@@ -156,7 +173,8 @@ export const OAuthContextProvider: React.FC<OAuthContextProps> = ({
       isLoading,
       errorUri,
       errorDescription,
-      errorCode
+      errorCode,
+      logout
     }}>
       {children}
     </OAuthContext.Provider>

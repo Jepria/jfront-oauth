@@ -1,6 +1,7 @@
 import React from 'react';
 export interface SecurityContext {
     authorize(): void;
+    logout?: () => void;
     accessToken?: string;
     expiresIn?: bigint;
     refreshToken?: string;
