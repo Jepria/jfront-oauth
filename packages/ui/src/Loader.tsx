@@ -1,5 +1,5 @@
-import React from 'react';
-import styled, { keyframes } from 'styled-components';
+import React from "react"
+import styled, { keyframes } from "styled-components"
 
 const Container = styled.div`
   position: absolute;
@@ -12,12 +12,12 @@ const Container = styled.div`
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-`;
+  -ms-flex-align: center;
+  align-items: center;
+`
 
 const rotate = keyframes`
   from {
@@ -27,7 +27,7 @@ const rotate = keyframes`
   to {
     transform: rotate(360deg);
   }
-`;
+`
 
 const DualRing = styled.div`
   display: inline-block;
@@ -43,40 +43,37 @@ const DualRing = styled.div`
     border-color: black transparent #ee3b45 transparent;
     animation: ${rotate} 1.2s linear infinite;
   }
-`;
+`
 
 const Title = styled.div`
   font-size: 24px;
   font-weight: normal;
   letter-spacing: 4px;
-  font: 18px/24px Source Sans Pro,sans-serif;
+  font: 18px/24px Source Sans Pro, sans-serif;
   color: #444;
-`;
+`
 
 const Text = styled.div`
   font-size: 16px;
   font-weight: normal;
   letter-spacing: 2px;
-  font: 13px/18px Source Sans Pro,sans-serif;
+  font: 13px/18px Source Sans Pro, sans-serif;
   color: #444;
-`;
+`
 
 export interface LoaderProps {
-  title?: string;
+  title?: string
   text?: string
 }
 
-export const Loader: React.FC<LoaderProps> = ({
-  title,
-  text
-}) => {
+export const Loader: React.FC<LoaderProps> = ({ title, text }) => {
   return (
     <Container>
-      <DualRing/>
+      <DualRing />
       <div>
         <Title>{title}</Title>
         <Text>{text}</Text>
       </div>
     </Container>
-  );
+  )
 }

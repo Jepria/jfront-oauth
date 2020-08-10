@@ -2,13 +2,13 @@
   "name": "@jfront-oauth/context",
   "version": "0.1.0",
   "license": "Apache-2.0",
-  "repository": "https://github.com/Jepria/jepria-oauth",
+  "repository": "https://github.com/Jepria/jfront-oauth",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/types/index.d.ts",
   "typings": "dist/types/index.d.ts",
   "dependencies": {
-    "@jfront-oauth/core": "latest"
+    "@jfront-oauth/core": "0.1.0"
   },
   "devDependencies": {
     "@types/react": "^16.9.0",

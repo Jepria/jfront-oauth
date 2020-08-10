@@ -2,7 +2,7 @@
   "name": "@jfront-oauth/core",
   "version": "0.1.0",
   "license": "Apache-2.0",
-  "repository": "https://github.com/Jepria/jepria-oauth",
+  "repository": "https://github.com/Jepria/jfront-oauth",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/types/index.d.ts",
