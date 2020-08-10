@@ -8,12 +8,12 @@
   "types": "dist/types/index.d.ts",
   "typings": "dist/types/index.d.ts",
   "dependencies": {
-    "typescript": "^3.9.5",
     "js-sha256": "0.9.0",
     "js-chacha20": "1.1.0",
     "js-base64": "3.3.3"
   },
   "devDependencies": {
+    "typescript": "^3.9.5",
     "axios": "^0.19.2"
   },
   "peerDependencies": {
@@ -24,16 +24,16 @@
   },
   "scripts": {
     "prebuild": "rimraf dist",
-    "start": "nodemon --watch src --exec yarn build -e ts,tsx",
+    "start": "nodemon --watch src --exec yarn build -e ts,js",
     "build": "concurrently yarn:build:*",
-    "test": "jest --env=jsdom --passWithNoTests",
+    "test": "jest --passWithNoTests",
     "lint": "concurrently yarn:lint:*",
     "version": "yarn build",
-    "build:esm": "cross-env BABEL_ENV=esm babel src --root-mode upward --extensions .ts,.tsx -d dist/esm --source-maps",
-    "build:cjs": "cross-env BABEL_ENV=cjs babel src --root-mode upward --extensions .ts,.tsx -d dist/cjs --source-maps",
+    "build:esm": "cross-env BABEL_ENV=esm babel src --root-mode upward --extensions .ts,.js -d dist/esm --source-maps",
+    "build:cjs": "cross-env BABEL_ENV=cjs babel src --root-mode upward --extensions .ts,.js -d dist/cjs --source-maps",
     "build:types": "tsc --emitDeclarationOnly --declaration --declarationDir dist/types",
     "test:cov": "yarn test --coverage",
-    "lint:src": "eslint src --ext .ts,.tsx --config ../../.eslintrc",
+    "lint:src": "eslint src --ext .ts,.js --config ../../.eslintrc",
     "lint:types": "tsc --noEmit"
   }
 }
