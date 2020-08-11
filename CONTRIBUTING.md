@@ -1,4 +1,4 @@
-Thanks for showing interest to contribute to JFront UI 💖, you rock!
+Thanks for showing interest to contribute to JFront OAuth 💖, you rock!
 
 When it comes to open source, there are different ways you can contribute, all
 of which are valuable. Here's few guidelines that should help you as you prepare
@@ -27,13 +27,13 @@ your contribution.
 The following steps will get you setup to contribute changes to this repo:
 
 1. Fork the repo (click the <kbd>Fork</kbd> button at the top right of
-   [this page](https://github.com/Jepria/jfront-ui))
+   [this page](https://github.com/Jepria/jfront-oauth))
 
 2. Clone your fork locally
 
 ```sh
 # in a terminal, cd to parent directory where you want your clone to be, then
-git clone https://github.com/<your_github_username>/jfront-ui.git
+git clone https://github.com/<your_github_username>/jfront-oauth.git
 
 cd jfront-ui
 ```
@@ -41,9 +41,6 @@ cd jfront-ui
 3. Setup all dependencies and build. JFront UI uses `yarn` and `lerna`, so run
    `yarn bootstrap`. This command will install dependencies, bootstrap the repo
    using `lerna` and build all packages.
-
-> If you run into any issues during this step, kindly reach out to the JFront UI
-> React team here: https://discord.gg/dQHfcWF
 
 ## Development
 
@@ -59,7 +56,6 @@ use consumed independently.
   testing
 - [Testing Library](https://testing-library.com/) for testing components and
   hooks
-- [Gatsby](https://www.gatsbyjs.org/) for a blazing fast documentation website.
 - [Changesets](https://github.com/atlassian/changesets) A way to manage
   versioning and changelogs
 
@@ -88,17 +84,17 @@ on. You can run `build`, `test`, `lint` commands
 #### Package Aliasing and Yarn Workspace
 
 Since we're using lerna monorepo + yarn workspaces by default, this enables us
-to run commands within component package directly from the root.
+to run commands within module package directly from the root.
 
-Each component is named this way `@jfront/[component]`. Let's say we want to
-build the checkbox component. Here's how to do it:
+Each module is named this way `@jfront-oauth/[module]`. Let's say we want to
+build the welcome component. Here's how to do it:
 
 ```bash
-yarn workspace @jfront/button build
+yarn workspace @jfront-oauth/welcome build
 
 # or
 
-lerna run build --scope @jfront/button
+lerna run build --scope @jfront/welcome
 ```
 
 **Shortcut:** To make this shorter and more convenient, we've added an alias for
@@ -106,14 +102,14 @@ each component in the root `package.json`. Now you can simple do:
 
 ```bash
 # to build
-yarn button build
+yarn welcome build
 
 # to test
-yarn button test
-yarn button test --watch
+yarn welcome test
+yarn welcome test --watch
 
 # to lint
-yarn button lint
+yarn welcome lint
 ```
 
 This alias is particularly useful when you're working on a specific component
