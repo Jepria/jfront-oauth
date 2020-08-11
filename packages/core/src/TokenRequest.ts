@@ -42,12 +42,12 @@ export class TokenRequest {
     if (!this.nonce) {
       throw new Error("nonce is undefined")
     }
-    let stringState = this.storage.getItem(this.nonce)
+    const stringState = this.storage.getItem(this.nonce)
     if (!stringState) {
       throw new Error("state not found")
     }
-    let state: OAuthMeta = JSON.parse(stringState)
-    let codeVerifier = state.codeVerifier
+    const state: OAuthMeta = JSON.parse(stringState)
+    const codeVerifier = state.codeVerifier
     this.storage.removeItem(this.nonce)
     return new Promise<TokenResponse>((resolve, reject) => {
       axios

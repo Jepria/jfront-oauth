@@ -44,7 +44,7 @@ export const OAuthWebContext: React.FC<OAuthWebContextProps> = ({
   const getCurrentUrl = () => window.location.pathname + window.location.search
 
   const getQueryParams = (): OAuthQueryParams => {
-    let queryParams = new URLSearchParams(window.location.search)
+    const queryParams = new URLSearchParams(window.location.search)
     return {
       authorizationCode: queryParams.get("code"),
       state: queryParams.get("state"),

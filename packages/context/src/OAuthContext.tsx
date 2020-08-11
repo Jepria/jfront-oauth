@@ -29,14 +29,14 @@ export const OAuthContext = createContext<SecurityContext>({
 export const useOAuth = (): SecurityContext => {
   const context = useContext(OAuthContext)
 
+  const { accessToken, expiresIn } = context
+
   useEffect(() => {
-    if (
-      !context.accessToken ||
-      (context.expiresIn && Date.now() < context.expiresIn)
-    ) {
+    if (!accessToken || (expiresIn && Date.now() < expiresIn)) {
       context.authorize()
     }
-  }, [context.accessToken])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [accessToken, expiresIn])
 
   return context
 }

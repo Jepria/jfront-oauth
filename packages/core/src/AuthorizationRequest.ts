@@ -74,8 +74,8 @@ export class AuthorizationRequest {
   }
 
   authorize = (): Promise<string> => {
-    let nonce = Crypto.getRandomString(32)
-    let date = new Date()
+    const nonce = Crypto.getRandomString(32)
+    const date = new Date()
     date.setMinutes(date.getMinutes() + 5)
     this.meta.expiresIn = date
     if (this.responseType === "code") {

@@ -7,13 +7,11 @@ const isBrowser =
   {}.toString.call(window) === "[object Window]"
 
 export function atob(data: string): string {
-  let decoded = Base64.decode(data)
-  return decoded
+  return Base64.decode(data)
 }
 
 export function btoa(data: string): string {
-  let encoded = Base64.encodeURL(data)
-  return encoded
+  return Base64.encodeURL(data)
 }
 
 export function getRandomString(length: number) {
@@ -25,14 +23,14 @@ export function getRandomString(length: number) {
     crypto = window.crypto || (window as any).msCrypto
   }
   if (crypto) {
-    let values = new Uint32Array(length)
+    const values = new Uint32Array(length)
     crypto.getRandomValues(values)
     for (let i = 0; i < length; i++) {
       result += charset[values[i] % charset.length]
     }
   } else {
     for (let i = 0; i < length; i++) {
-      let rand = getRandomValue(8)
+      const rand = getRandomValue(8)
       result += charset[rand % charset.length]
     }
   }
@@ -42,8 +40,7 @@ export function getRandomString(length: number) {
 export function sha256(str: string) {
   return new Promise<string>((resolve, reject) => {
     try {
-      let hash = hashSHA256(str)
-      resolve(hash)
+      resolve(hashSHA256(str))
     } catch (e) {
       reject(e)
     }

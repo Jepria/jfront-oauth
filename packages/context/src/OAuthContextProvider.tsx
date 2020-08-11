@@ -115,17 +115,18 @@ export const OAuthContextProvider: React.FC<OAuthContextProps> = ({
     if (authorizationUrl) {
       onAuthorizationRequest(authorizationUrl)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [authorizationUrl])
 
   useEffect(() => {
     if (authorizationCode && state) {
-      let metaString = storage.getItem(state)
+      const metaString = storage.getItem(state)
       getToken(authorizationCode, state)
         .then((result) => {
           if (!metaString) {
             throw new Error("state not found")
           }
-          let meta: OAuthMeta = JSON.parse(metaString)
+          const meta: OAuthMeta = JSON.parse(metaString)
           if (result.token_type === "Bearer") {
             redirect(meta.currentPath)
             dispatch(
@@ -149,11 +150,12 @@ export const OAuthContextProvider: React.FC<OAuthContextProps> = ({
           dispatch(tokenRequestFailure(error.error, error.errorDescription))
         })
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [authorizationCode, state])
 
   useEffect(() => {
     if (isOAuthCallback()) {
-      let queryParams = getQueryParams()
+      const queryParams = getQueryParams()
       if (queryParams.error) {
         dispatch(
           authorizationRequestFailure(
@@ -198,6 +200,7 @@ export const OAuthContextProvider: React.FC<OAuthContextProps> = ({
         ),
       )
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const logout = () => {
@@ -206,7 +209,7 @@ export const OAuthContextProvider: React.FC<OAuthContextProps> = ({
 
   useEffect(() => {
     if (configureAxios && accessToken) {
-      let currentAxios: AxiosInstance = axiosInstance ? axiosInstance : axios
+      const currentAxios: AxiosInstance = axiosInstance ? axiosInstance : axios
       currentAxios.interceptors.request.use((config: AxiosRequestConfig) => {
         if (expiresIn && Date.now() < expiresIn) {
           authorize()
@@ -228,6 +231,7 @@ export const OAuthContextProvider: React.FC<OAuthContextProps> = ({
         },
       )
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [accessToken])
 
   return (

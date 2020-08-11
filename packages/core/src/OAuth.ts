@@ -87,7 +87,7 @@ export class OAuth {
    */
   authorize = (responseType: string, currentPath: string): Promise<string> => {
     if (this.authorizeUrl) {
-      let authRequest = new AuthorizationRequest(
+      const authRequest = new AuthorizationRequest(
         this.clientId,
         this.redirectUri,
         this.authorizeUrl,
