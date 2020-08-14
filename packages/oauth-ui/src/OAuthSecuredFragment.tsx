@@ -1,5 +1,5 @@
 import React from "react"
-import { useOAuth } from "@jfront-oauth/context"
+import { useOAuth } from "@jfront/oauth-context"
 import { Loader } from "./Loader"
 
 export const OAuthSecuredFragment: React.FC = ({ children }) => {

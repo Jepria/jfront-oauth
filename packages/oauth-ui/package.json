@@ -1,5 +1,5 @@
 {
-  "name": "@jfront-oauth/context",
+  "name": "@jfront/oauth-ui",
   "version": "0.1.0",
   "license": "Apache-2.0",
   "repository": "https://github.com/Jepria/jfront-oauth",
@@ -8,26 +8,29 @@
   "types": "dist/types/index.d.ts",
   "typings": "dist/types/index.d.ts",
   "dependencies": {
-    "@jfront-oauth/core": "0.1.0"
+    "@jfront/oauth-context": "0.1.0"
   },
   "devDependencies": {
     "@types/react": "^16.9.0",
+    "@types/react-dom": "^16.9.0",
+    "@types/styled-components": "^5.0.1",
     "react": "16.13.1",
+    "react-dom": "16.13.1",
     "typescript": "^3.9.5",
+    "styled-components": "^5.0.1",
     "axios": "^0.19.2"
   },
   "peerDependencies": {
     "react": ">= 16.13.x",
+    "react-dom": ">= 16.13.x",
+    "styled-components": ">= 5.0.x",
     "axios": ">= 0.19.x"
-  },
-  "publishConfig": {
-    "access": "public"
   },
   "scripts": {
     "prebuild": "rimraf dist",
     "start": "nodemon --watch src --exec yarn build -e ts,tsx",
     "build": "concurrently yarn:build:*",
-    "test": "jest --passWithNoTests",
+    "test": "jest --env=jsdom --passWithNoTests",
     "lint": "concurrently yarn:lint:*",
     "version": "yarn build",
     "build:esm": "cross-env BABEL_ENV=esm babel src --root-mode upward --extensions .ts,.tsx -d dist/esm --source-maps",

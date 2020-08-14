@@ -1,5 +1,5 @@
 import React from "react"
-import { OAuthContextProvider, OAuthQueryParams } from "@jfront-oauth/context"
+import { OAuthContextProvider, OAuthQueryParams } from "@jfront/oauth-context"
 import { AxiosInstance } from "axios"
 
 export interface OAuthWebContextProps {

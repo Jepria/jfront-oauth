@@ -1,5 +1,5 @@
 {
-  "name": "jfront-oauth",
+  "name": "@jfront/oauth",
   "private": "true",
   "workspaces": {
     "packages": [

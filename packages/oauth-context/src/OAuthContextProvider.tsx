@@ -11,7 +11,7 @@ import {
   authorizationRequestSuccess,
   TokenResponse,
   OAuthMeta,
-} from "@jfront-oauth/core"
+} from "@jfront/oauth-core"
 import axios, {
   AxiosInstance,
   AxiosRequestConfig,
