@@ -24,8 +24,6 @@
     "bootstrap": "lerna bootstrap --use-workspaces",
     "bundlesize": "bundlesize -c bundlesize.config.json",
     "build:storybook": "build-storybook",
-    "patch": "node -r esm scripts/patch-workspace.js",
-    "create-pkg": "node scripts/create-package.js",
     "version:release": "lerna version --conventional-commits --conventional-graduate -y",
     "version:pre-release": "lerna version --conventional-commits --conventional-prerelease --preid=rc -y",
     "version:pre-release:alpha": "lerna version --conventional-commits --conventional-prerelease --preid=alpha",
