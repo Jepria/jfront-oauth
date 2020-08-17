@@ -12,13 +12,13 @@
   },
   "devDependencies": {
     "@types/react": "^16.9.0",
+    "axios": "^0.19.2",
     "react": "16.13.1",
-    "typescript": "^3.9.5",
-    "axios": "^0.19.2"
+    "typescript": "^3.9.5"
   },
   "peerDependencies": {
-    "react": ">= 16.13.x",
-    "axios": ">= 0.19.x"
+    "axios": ">= 0.19.x",
+    "react": ">= 16.13.x"
   },
   "publishConfig": {
     "access": "public"
@@ -36,5 +36,6 @@
     "test:cov": "yarn test --coverage",
     "lint:src": "eslint src --ext .ts,.tsx --config ../../.eslintrc",
     "lint:types": "tsc --noEmit"
-  }
+  },
+  "gitHead": "7e0a0f24c5476638fded2449df4312b23558380f"
 }

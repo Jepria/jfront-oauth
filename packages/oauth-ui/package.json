@@ -14,17 +14,20 @@
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
     "@types/styled-components": "^5.0.1",
+    "axios": "^0.19.2",
     "react": "16.13.1",
     "react-dom": "16.13.1",
-    "typescript": "^3.9.5",
     "styled-components": "^5.0.1",
-    "axios": "^0.19.2"
+    "typescript": "^3.9.5"
   },
   "peerDependencies": {
+    "axios": ">= 0.19.x",
     "react": ">= 16.13.x",
     "react-dom": ">= 16.13.x",
-    "styled-components": ">= 5.0.x",
-    "axios": ">= 0.19.x"
+    "styled-components": ">= 5.0.x"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "scripts": {
     "prebuild": "rimraf dist",
@@ -39,5 +42,6 @@
     "test:cov": "yarn test --coverage",
     "lint:src": "eslint src --ext .ts,.tsx --config ../../.eslintrc",
     "lint:types": "tsc --noEmit"
-  }
+  },
+  "gitHead": "7e0a0f24c5476638fded2449df4312b23558380f"
 }
