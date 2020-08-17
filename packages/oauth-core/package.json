@@ -35,6 +35,5 @@
     "test:cov": "yarn test --coverage",
     "lint:src": "eslint src --ext .ts,.js --config ../../.eslintrc",
     "lint:types": "tsc --noEmit"
-  },
-  "gitHead": "7e0a0f24c5476638fded2449df4312b23558380f"
+  }
 }
