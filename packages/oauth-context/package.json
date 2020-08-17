@@ -8,7 +8,7 @@
   "types": "dist/types/index.d.ts",
   "typings": "dist/types/index.d.ts",
   "dependencies": {
-    "@jfront/oauth-core": "0.1.0"
+    "@jfront/oauth-core": "^0.1.0"
   },
   "devDependencies": {
     "@types/react": "^16.9.0",
