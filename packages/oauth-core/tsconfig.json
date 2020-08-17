@@ -1,10 +1,8 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "outDir": "dist",
     "module": "esnext",
     "lib": ["dom", "esnext"],
-    "declaration": true,
-    "sourceMap": true,
     "moduleResolution": "node",
     "skipLibCheck": true,
     "strict": true,
@@ -14,12 +12,13 @@
     "strictFunctionTypes": true,
     "strictNullChecks": true,
     "strictPropertyInitialization": true,
-    "jsx": "react",
+    "jsx": "preserve",
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "downlevelIteration": true,
-    "preserveSymlinks": true
+    "preserveSymlinks": true,
+    "allowJs": true
   },
-  "include": ["packages"],
-  "exclude": ["node_modules"]
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
 }

@@ -1,0 +1,16 @@
+{
+  "files": [
+    {
+      "path": "packages/core/dist/esm/*.js",
+      "maxSize": "5 kB"
+    },
+    {
+      "path": "packages/context/dist/esm/*.js",
+      "maxSize": "5 kB"
+    },
+    {
+      "path": "packages/ui/dist/esm/*.js",
+      "maxSize": "5 kB"
+    }
+  ]
+}
