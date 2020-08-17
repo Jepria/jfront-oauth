@@ -4,7 +4,7 @@ JFront OAuth packages
 
 Библиотека включает в себя реализацию взаимодействия с jepria-oauth.
 
-### Installing from github
+### Installing from github (устарело)
 
 Using master.
 
