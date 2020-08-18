@@ -16,10 +16,8 @@ your contribution.
 - [Making a Pull Request?](#making-a-pull-request)
   - [Commit Convention](#commit-convention)
   - [Steps to PR](#steps-to-pr)
-  - [Changesets](#changesets)
+  - [Continuous integration](#continuous-integration)
   - [Tests](#tests)
-- [Want to write a blog post or tutorial](#want-to-write-a-blog-post-or-tutorial)
-- [Want to help improve the docs?](#want-to-help-improve-the-docs)
 - [License](#license)
 
 ## Setup
@@ -35,12 +33,12 @@ The following steps will get you setup to contribute changes to this repo:
 # in a terminal, cd to parent directory where you want your clone to be, then
 git clone https://github.com/<your_github_username>/jfront-oauth.git
 
-cd jfront-ui
+cd jfront-oauth
 ```
 
-3. Setup all dependencies and build. JFront UI uses `yarn` and `lerna`, so run
-   `yarn bootstrap`. This command will install dependencies, bootstrap the repo
-   using `lerna` and build all packages.
+3. Setup all dependencies and build. JFront OAuth uses `yarn` and `lerna`, so
+   run `yarn bootstrap`. This command will install dependencies, bootstrap the
+   repo using `lerna` and build all packages.
 
 ## Development
 
@@ -56,8 +54,6 @@ use consumed independently.
   testing
 - [Testing Library](https://testing-library.com/) for testing components and
   hooks
-- [Changesets](https://github.com/atlassian/changesets) A way to manage
-  versioning and changelogs
 
 ### Commands
 
@@ -70,13 +66,13 @@ dependencies for cross-component development
 **`yarn storybook`**: starts storybook server and loads stories in files that
 ends with `.stories.tsx`
 
-**`yarn docs:start`**: run the documentation site locally
-
 **`yarn build`**: run build for all component packages
 
 **`yarn test`**: run test for all component packages
 
-**`yarn release`**: publish changed packages
+**`yarn version:release`**: update version for changed packages
+
+**`yarn publish:release`**: publish changed packages
 
 **`yarn [package] <cmd>`**: Run a command on the specific package you're working
 on. You can run `build`, `test`, `lint` commands
@@ -86,15 +82,15 @@ on. You can run `build`, `test`, `lint` commands
 Since we're using lerna monorepo + yarn workspaces by default, this enables us
 to run commands within module package directly from the root.
 
-Each module is named this way `@jfront-oauth/[module]`. Let's say we want to
+Each module is named this way `@jfront/oauth-[module]`. Let's say we want to
 build the welcome component. Here's how to do it:
 
 ```bash
-yarn workspace @jfront-oauth/welcome build
+yarn workspace @jfront/oauth-welcome build
 
 # or
 
-lerna run build --scope @jfront/welcome
+lerna run build --scope @jfront/oauth-welcome
 ```
 
 **Shortcut:** To make this shorter and more convenient, we've added an alias for
@@ -102,14 +98,14 @@ each component in the root `package.json`. Now you can simple do:
 
 ```bash
 # to build
-yarn welcome build
+yarn core build
 
 # to test
-yarn welcome test
-yarn welcome test --watch
+yarn core test
+yarn core test --watch
 
 # to lint
-yarn welcome lint
+yarn core lint
 ```
 
 This alias is particularly useful when you're working on a specific component
@@ -122,17 +118,14 @@ docs, simply run `yarn docs:start`.
 
 ### Storybook
 
-Build components in isolation with Storybook using `yarn storybook`.
+Build components in isolation with Storybook using `yarn storybook`. Current
+storybook can be found at https://jepria.github.io/jfront-oauth/.
 
 ## Think you found a bug?
 
 Please conform to the issue template and provide a clear path to reproduction
-with a code example. The best way to show a bug is by sending a CodeSandbox link
-
-You may wish to use our starters to help you get going:
-
-- JavaScript Starter: https://codesandbox.io/s/jfront-javascript-TBD
-- TypeScript Starter: https://codesandbox.io/s/jfront-typescript-TBD
+with a code example. The best way to show a bug is by sending a CodeSandbox
+link.
 
 ## Proposing new or changed API?
 
@@ -154,8 +147,7 @@ When you create a commit we kindly ask you to follow the convention
 `category(scope or module): message` in your commit message while using one of
 the following categories:
 
-- `feat / feature`: all changes that introduce completely new code or new
-  features
+- `feat`: all changes that introduce completely new code or new features
 - `fix`: changes that fix a bug (ideally you will addtionally reference an issue
   if present)
 - `refactor`: any code related change that is not a fix nor a feature
@@ -176,38 +168,30 @@ https://www.conventionalcommits.org/ or check out the
 
 ### Steps to PR
 
-- Fork of the jfrontui repository and clone your fork
+- Fork of the jfront-oauth repository and clone your fork
 - Create a new branch out of the `develop` branch. We follow the convention
-  `[type/scope]`. For example `fix/accordion-hook`, `docs/menu-typo`
+  `[dev_type_scope]`. For example `dev_fix_hook`, `dev_docs_menu_typo`
 
   - `type` can be either `docs`, `fix`, `feat`, `build`, or any other
     conventional commit type
   - `scope` is just a short id that describes the scope of work.
 
-### Changesets
+### Continuous integration
 
-The JFront project uses [`changesets`](https://github.com/atlassian/changesets)
-to manage versioning and changelogs.
+JFront OAuth uses [GitHub Actions](https://github.com/features/actions) for CI
+processing.
 
-A new changeset can be created using `yarn changeset`. This will begin a guided
-process that will ask you to select which packages you're changing, which type
-of version bump each package should receive (major, minor, or patch, defaulting
-to patch for all packages if no option is selected), and the change that you've
-made.
+| branch              | version                     | tag      |
+| :------------------ | :-------------------------- | :------- |
+| `master`            | из `package.json`           | `latest` |
+| `release/<version>` | `<version>-rc.<sha>`        | `next`   |
+| `develop`           | `<version>-alpha/beta<sha>` | `canary` |
 
-Changesets are stored in `.changesets/` and don't do anything until we release a
-new version. At this time, the changesets are processed to determine which
-packages to bump, and the change messages are appended to the corresponding
-`CHANGELOG.md` files for each package.
-
-If you don't feel comfortable generating a changeset for changes you've made to
-the project, don't worry about it! We have a GitHub bot that will automatically
-reply to your PR letting us know that you haven't created a changeset, and a
-maintainer can add a changeset for you.
-
-See the
-[Detailed Explanation](https://github.com/atlassian/changesets/blob/master/docs/detailed-explanation.md)
-document for more information.
+- With PUSH in master branch CI updates version, creates release and publish to
+  NPM.
+- On release/_ branch creation version updates to _-rc.\*, publish is manual.
+- PUSH/PULL_REQUEST in develop runs auto-testing, PR is not allowed if tests are
+  not completed.
 
 ### Tests
 
@@ -215,16 +199,7 @@ All commits that fix bugs or add features need a test.
 
 > **Dear JFront team:** Please do not merge code without tests
 
-## Want to write a blog post or tutorial
-
-That would be amazing! Reach out to the core team here:
-https://discord.gg/dQHfcWF. We would love to support you anyway we can.
-
-## Want to help improve the docs?
-
-TODO
-
 ## License
 
-By contributing your code to the jfront-ui GitHub repository, you agree to
+By contributing your code to the jfront-oauth GitHub repository, you agree to
 license your contribution under the Apache 2.0 license.
