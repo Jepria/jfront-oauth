@@ -170,7 +170,7 @@ https://www.conventionalcommits.org/ or check out the
 
 - Fork of the jfront-oauth repository and clone your fork
 - Create a new branch out of the `develop` branch. We follow the convention
-  `[dev_type_scope]`. For example `dev_fix_hook`, `dev_docs_menu_typo`
+  `[type/scope]`. For example `fix/accordion-hook`, `docs/menu-typo`
 
   - `type` can be either `docs`, `fix`, `feat`, `build`, or any other
     conventional commit type
