@@ -43,10 +43,8 @@ function App() {
     <OAuthWebContext
       clientId={"243j24h246j242gjikh6kllnn5l"} //application client_id
       redirectUri={"http://localhost/app/oauth"} //library uses scheme:[//authority]/context_path/oauth url as default callback endpoint
-      oauthContextPath={"http://localhost/oauth/api"}
+      oauthContextPath={"http://localhost/oauth/api"} //oauth API base url
     >
-      {" "}
-      //oauth API base url
       <OAuthSecuredFragment>
         <div>Logged in</div>
       </OAuthSecuredFragment>
@@ -57,7 +55,15 @@ function App() {
 
 ### Docs
 
-TODO
+- [OAuth Core](https://github.com/Jepria/jfront-oauth/blob/master/packages/oauth-core/README.md)
+- [OAuth Context](https://github.com/Jepria/jfront-oauth/blob/master/packages/oauth-context/README.md)
+- [OAuth UI](https://github.com/Jepria/jfront-oauth/blob/master/packages/oauth-ui/README.md)
+
+### Changelogs
+
+- [OAuth Core](https://github.com/Jepria/jfront-oauth/blob/master/packages/oauth-core/CHANGELOG.md)
+- [OAuth Context](https://github.com/Jepria/jfront-oauth/blob/master/packages/oauth-context/CHANGELOG.md)
+- [OAuth UI](https://github.com/Jepria/jfront-oauth/blob/master/packages/oauth-ui/CHANGELOG.md)
 
 ### Contributing
 
