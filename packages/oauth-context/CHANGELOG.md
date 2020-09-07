@@ -1,5 +1,21 @@
 # Change Log
 
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [0.1.1](https://github.com/Jepria/jfront-oauth/compare/@jfront/oauth-context@0.1.0...@jfront/oauth-context@0.1.1) (2020-09-07)
+
+
+### Bug Fixes
+
+* axios header definitions ([2274063](https://github.com/Jepria/jfront-oauth/commit/22740631de3eee2c3a52fe1310bc938962d9c3d2))
+
+
+
+
+
+# Change Log
+
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
