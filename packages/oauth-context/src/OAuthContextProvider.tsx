@@ -12,7 +12,7 @@ import {
   TokenResponse,
   OAuthMeta,
 } from "@jfront/oauth-core"
-import axios, {
+import {
   AxiosInstance,
   AxiosRequestConfig,
   AxiosResponse,
@@ -208,16 +208,9 @@ export const OAuthContextProvider: React.FC<OAuthContextProps> = ({
   }
 
   useEffect(() => {
-    if (configureAxios && accessToken) {
-      const currentAxios: AxiosInstance = axiosInstance ? axiosInstance : axios
-      currentAxios.interceptors.request.use((config: AxiosRequestConfig) => {
-        if (expiresIn && Date.now() < expiresIn) {
-          authorize()
-        }
-        config.headers["Authorization"] = `Bearer ${accessToken}`
-        return config
-      })
-      currentAxios.interceptors.response.use(
+    if (configureAxios && axiosInstance && accessToken) {
+      axiosInstance.defaults.headers.Authorization = `Bearer ${accessToken}`
+      axiosInstance.interceptors.response.use(
         (response: AxiosResponse) => {
           if (401 === response?.status) {
             authorize()
