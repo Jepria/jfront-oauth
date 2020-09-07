@@ -12,12 +12,7 @@ import {
   TokenResponse,
   OAuthMeta,
 } from "@jfront/oauth-core"
-import {
-  AxiosInstance,
-  AxiosRequestConfig,
-  AxiosResponse,
-  AxiosError,
-} from "axios"
+import { AxiosInstance, AxiosResponse, AxiosError } from "axios"
 import { OAuthContext } from "./OAuthContext"
 
 export interface OAuthQueryParams {
@@ -209,7 +204,7 @@ export const OAuthContextProvider: React.FC<OAuthContextProps> = ({
 
   useEffect(() => {
     if (configureAxios && axiosInstance && accessToken) {
-      axiosInstance.defaults.headers.Authorization = `Bearer ${accessToken}`
+      axiosInstance.defaults.headers["Authorization"] = `Bearer ${accessToken}`
       axiosInstance.interceptors.response.use(
         (response: AxiosResponse) => {
           if (401 === response?.status) {
