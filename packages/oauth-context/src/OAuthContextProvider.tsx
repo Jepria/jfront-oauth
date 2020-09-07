@@ -202,25 +202,22 @@ export const OAuthContextProvider: React.FC<OAuthContextProps> = ({
     onLogout(oauth.logout(getCurrentUrl()))
   }
 
-  useEffect(() => {
-    if (configureAxios && axiosInstance && accessToken) {
-      axiosInstance.defaults.headers["Authorization"] = `Bearer ${accessToken}`
-      axiosInstance.interceptors.response.use(
-        (response: AxiosResponse) => {
-          if (401 === response?.status) {
-            authorize()
-          }
-          return response
-        },
-        (error: AxiosError) => {
-          if (401 === error?.response?.status) {
-            authorize()
-          }
-        },
-      )
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [accessToken])
+  if (configureAxios && axiosInstance && accessToken) {
+    axiosInstance.defaults.headers["Authorization"] = `Bearer ${accessToken}`
+    axiosInstance.interceptors.response.use(
+      (response: AxiosResponse) => {
+        if (401 === response?.status) {
+          authorize()
+        }
+        return response
+      },
+      (error: AxiosError) => {
+        if (401 === error?.response?.status) {
+          authorize()
+        }
+      },
+    )
+  }
 
   return (
     <OAuthContext.Provider
