@@ -12,7 +12,7 @@
     },
     "version": {
       "ignoreChanges": ["**/stories/**", "**/tests/**", "**/*.md"],
-      "allowBranch": ["master", "release/*", "develop"]
+      "allowBranch": ["master", "release/*", "develop", "hotfix/*"]
     }
   }
 }
