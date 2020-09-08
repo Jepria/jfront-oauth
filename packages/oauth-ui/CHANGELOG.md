@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.4](https://github.com/Jepria/jfront-oauth/compare/@jfront/oauth-ui@0.1.3...@jfront/oauth-ui@0.1.4) (2020-09-08)
+
+
+### Bug Fixes
+
+* logout process ([41f89c2](https://github.com/Jepria/jfront-oauth/commit/41f89c244ab600df172dcc7c2f1a426d8d4ac6ec))
+
+
+
+
+
 ## [0.1.3](https://github.com/Jepria/jfront-oauth/compare/@jfront/oauth-ui@0.1.2...@jfront/oauth-ui@0.1.3) (2020-09-07)
 
 **Note:** Version bump only for package @jfront/oauth-ui

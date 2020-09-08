@@ -23,10 +23,10 @@ export interface OAuthQueryParams {
 }
 
 export interface OAuthContextProps {
-  onAuthorizationRequest: (authorizationUrl: string) => void
   isOAuthCallback: () => boolean
   getQueryParams: () => OAuthQueryParams
   redirect: (url: string) => void
+  forward: (url: string) => void
   getCurrentUrl: () => string
   onLogout: (logoutUrl: string) => void
   storage: Storage
@@ -43,10 +43,10 @@ export interface OAuthContextProps {
  * @param param props
  */
 export const OAuthContextProvider: React.FC<OAuthContextProps> = ({
-  onAuthorizationRequest,
   isOAuthCallback,
   getQueryParams,
   getCurrentUrl,
+  forward,
   redirect,
   onLogout,
   storage,
@@ -108,7 +108,7 @@ export const OAuthContextProvider: React.FC<OAuthContextProps> = ({
 
   useEffect(() => {
     if (authorizationUrl) {
-      onAuthorizationRequest(authorizationUrl)
+      redirect(authorizationUrl)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [authorizationUrl])
@@ -123,7 +123,7 @@ export const OAuthContextProvider: React.FC<OAuthContextProps> = ({
           }
           const meta: OAuthMeta = JSON.parse(metaString)
           if (result.token_type === "Bearer") {
-            redirect(meta.currentPath)
+            forward(meta.currentPath)
             dispatch(
               tokenRequestSuccess(
                 result.access_token,
