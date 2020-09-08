@@ -32,13 +32,13 @@ export const OAuthWebContext: React.FC<OAuthWebContextProps> = ({
   axiosInstance,
   children,
 }) => {
-  const onAuthorizationRequest = (url: string) => window.location.replace(url)
-
   const isOAuthCallback = () =>
     window.location.pathname.endsWith("/oauth") ||
     window.location.pathname.endsWith("/oauth/")
 
-  const redirect = (url: string) =>
+  const redirect = (url: string) => window.location.replace(url)
+
+  const forward = (url: string) =>
     window.history.replaceState(window.history.state, "", url)
 
   const getCurrentUrl = () => window.location.pathname + window.location.search
@@ -59,9 +59,9 @@ export const OAuthWebContext: React.FC<OAuthWebContextProps> = ({
 
   return (
     <OAuthContextProvider
-      onAuthorizationRequest={onAuthorizationRequest}
       isOAuthCallback={isOAuthCallback}
       redirect={redirect}
+      forward={forward}
       getCurrentUrl={getCurrentUrl}
       getQueryParams={getQueryParams}
       clientId={clientId}

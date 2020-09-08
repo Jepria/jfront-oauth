@@ -12,12 +12,7 @@ import {
   TokenResponse,
   OAuthMeta,
 } from "@jfront/oauth-core"
-import {
-  AxiosInstance,
-  AxiosRequestConfig,
-  AxiosResponse,
-  AxiosError,
-} from "axios"
+import { AxiosInstance, AxiosResponse, AxiosError } from "axios"
 import { OAuthContext } from "./OAuthContext"
 
 export interface OAuthQueryParams {
@@ -28,10 +23,10 @@ export interface OAuthQueryParams {
 }
 
 export interface OAuthContextProps {
-  onAuthorizationRequest: (authorizationUrl: string) => void
   isOAuthCallback: () => boolean
   getQueryParams: () => OAuthQueryParams
   redirect: (url: string) => void
+  forward: (url: string) => void
   getCurrentUrl: () => string
   onLogout: (logoutUrl: string) => void
   storage: Storage
@@ -48,10 +43,10 @@ export interface OAuthContextProps {
  * @param param props
  */
 export const OAuthContextProvider: React.FC<OAuthContextProps> = ({
-  onAuthorizationRequest,
   isOAuthCallback,
   getQueryParams,
   getCurrentUrl,
+  forward,
   redirect,
   onLogout,
   storage,
@@ -113,7 +108,7 @@ export const OAuthContextProvider: React.FC<OAuthContextProps> = ({
 
   useEffect(() => {
     if (authorizationUrl) {
-      onAuthorizationRequest(authorizationUrl)
+      redirect(authorizationUrl)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [authorizationUrl])
@@ -128,7 +123,7 @@ export const OAuthContextProvider: React.FC<OAuthContextProps> = ({
           }
           const meta: OAuthMeta = JSON.parse(metaString)
           if (result.token_type === "Bearer") {
-            redirect(meta.currentPath)
+            forward(meta.currentPath)
             dispatch(
               tokenRequestSuccess(
                 result.access_token,
@@ -207,25 +202,22 @@ export const OAuthContextProvider: React.FC<OAuthContextProps> = ({
     onLogout(oauth.logout(getCurrentUrl()))
   }
 
-  useEffect(() => {
-    if (configureAxios && axiosInstance && accessToken) {
-      axiosInstance.defaults.headers.Authorization = `Bearer ${accessToken}`
-      axiosInstance.interceptors.response.use(
-        (response: AxiosResponse) => {
-          if (401 === response?.status) {
-            authorize()
-          }
-          return response
-        },
-        (error: AxiosError) => {
-          if (401 === error?.response?.status) {
-            authorize()
-          }
-        },
-      )
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [accessToken])
+  if (configureAxios && axiosInstance && accessToken) {
+    axiosInstance.defaults.headers["Authorization"] = `Bearer ${accessToken}`
+    axiosInstance.interceptors.response.use(
+      (response: AxiosResponse) => {
+        if (401 === response?.status) {
+          authorize()
+        }
+        return response
+      },
+      (error: AxiosError) => {
+        if (401 === error?.response?.status) {
+          authorize()
+        }
+      },
+    )
+  }
 
   return (
     <OAuthContext.Provider

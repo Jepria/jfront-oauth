@@ -64,9 +64,9 @@ it("Authorization request test", async () => {
     const { getByText } = render(
       <OAuthContextProvider
         getQueryParams={getQueryParams}
-        redirect={() => {}}
+        forward={() => {}}
         onLogout={() => {}}
-        onAuthorizationRequest={onAuthorizationRequest}
+        redirect={onAuthorizationRequest}
         isOAuthCallback={isOAuthCallback}
         getCurrentUrl={getCurrentUrl}
         clientId={"clientId"}
@@ -88,7 +88,7 @@ it("Authorization request test", async () => {
 it("Token request test", async () => {
   const isOAuthCallback = () => true
 
-  const redirect = (url: any) => {
+  const forward = (url: any) => {
     expect(url).toBe("http://localhost")
   }
 
@@ -120,10 +120,10 @@ it("Token request test", async () => {
       <OAuthContextProvider
         isOAuthCallback={isOAuthCallback}
         onLogout={() => {}}
-        onAuthorizationRequest={() => {}}
+        redirect={() => {}}
         getCurrentUrl={() => ""}
         getQueryParams={getQueryParams}
-        redirect={redirect}
+        forward={forward}
         clientId={"clientId"}
         redirectUri={"http://redirect"}
         oauthContextPath={"oauth"}
