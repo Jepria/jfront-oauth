@@ -1,15 +1,15 @@
 import * as React from "react"
-import { OAuthError } from "../src/OAuthError"
+import { UserPanel } from "../src/UserPanel"
 
 export default {
-  title: "Error",
+  title: "UserPanel",
   decorators: [(StoryFn: Function) => <StoryFn />],
 }
 
 export const BasicUsage = () => {
   return (
     <>
-      <OAuthError errorCode="Test" errorDescription="Error description" />
+      <UserPanel />
     </>
   )
 }

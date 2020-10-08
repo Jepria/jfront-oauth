@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "outDir": "dist",
+    "module": "esnext",
+    "lib": ["dom", "esnext"],
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "strict": true,
+    "noFallthroughCasesInSwitch": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "noImplicitAny": true,
+    "strictFunctionTypes": true,
+    "strictNullChecks": true,
+    "strictPropertyInitialization": true,
+    "jsx": "preserve",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "downlevelIteration": true,
+    "preserveSymlinks": true
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
+}
