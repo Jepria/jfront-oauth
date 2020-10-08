@@ -1,15 +1,15 @@
 import * as React from "react"
-import { OAuthError } from "../src/OAuthError"
+import { Loader } from "../src/Loader"
 
 export default {
-  title: "Error",
+  title: "Loader",
   decorators: [(StoryFn: Function) => <StoryFn />],
 }
 
 export const BasicUsage = () => {
   return (
     <>
-      <OAuthError errorCode="Test" errorDescription="Error description" />
+      <Loader title="Loader" text="loader example" />
     </>
   )
 }

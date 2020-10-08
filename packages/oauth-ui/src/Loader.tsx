@@ -8,14 +8,8 @@ const Container = styled.div`
   margin: 0;
   padding: 0;
   background: #f0f0f0;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
   justify-content: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
 `
 

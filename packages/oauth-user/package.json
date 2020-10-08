@@ -1,6 +1,6 @@
 {
-  "name": "@jfront/oauth-ui",
-  "version": "0.1.4",
+  "name": "@jfront/oauth-user",
+  "version": "0.0.1",
   "license": "Apache-2.0",
   "repository": "https://github.com/Jepria/jfront-oauth",
   "main": "dist/cjs/index.js",
@@ -8,8 +8,7 @@
   "types": "dist/types/index.d.ts",
   "typings": "dist/types/index.d.ts",
   "dependencies": {
-    "@jfront/oauth-context": "^0.1.4",
-    "@jfront/oauth-user": "^0.0.1"
+    "@jfront/oauth-context": "^0.1.4"
   },
   "devDependencies": {
     "@types/react": "^16.9.0",
@@ -17,15 +16,11 @@
     "@types/styled-components": "^5.0.1",
     "axios": "^0.19.2",
     "react": "16.13.1",
-    "react-dom": "16.13.1",
-    "styled-components": "^5.0.1",
     "typescript": "^3.9.5"
   },
   "peerDependencies": {
     "axios": ">= 0.19.x",
-    "react": ">= 16.13.x",
-    "react-dom": ">= 16.13.x",
-    "styled-components": ">= 5.0.x"
+    "react": ">= 16.13.x"
   },
   "publishConfig": {
     "access": "public"
