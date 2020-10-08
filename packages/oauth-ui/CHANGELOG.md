@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.1](https://github.com/Jepria/jfront-oauth/compare/@jfront/oauth-ui@0.2.0...@jfront/oauth-ui@0.2.1) (2020-10-08)
+
+
+### Bug Fixes
+
+* user panel export ([c0fb790](https://github.com/Jepria/jfront-oauth/commit/c0fb79022f10fceb752bb6894a3e0b9db88dc117))
+
+
+
+
+
 # [0.2.0](https://github.com/Jepria/jfront-oauth/compare/@jfront/oauth-ui@0.1.4...@jfront/oauth-ui@0.2.0) (2020-10-08)
 
 
