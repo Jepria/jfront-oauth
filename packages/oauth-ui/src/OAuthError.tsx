@@ -37,11 +37,13 @@ const Text = styled.div`
 `
 
 export interface OAuthErrorProps {
+  errorId?: string
   errorCode?: string
   errorDescription?: string
 }
 
 export const OAuthError = ({
+  errorId,
   errorCode,
   errorDescription,
 }: OAuthErrorProps) => {
@@ -49,6 +51,7 @@ export const OAuthError = ({
     <Container>
       <Dialog>
         <Title>{errorCode}</Title>
+        {errorId && <Text>error ID - {errorId}</Text>}
         <Text>{errorDescription}</Text>
       </Dialog>
     </Container>

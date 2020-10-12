@@ -20,6 +20,7 @@ export interface AuthorizationRequestFailureAction {
   type: typeof AUTHORIZATION_REQUEST_FAILURE
   errorCode: string
   errorDescription?: string
+  errorId?: string
 }
 
 export interface TokenRequestAction {
@@ -39,6 +40,7 @@ export interface TokenRequestFailureAction {
   errorCode: string
   errorUri?: string
   errorDescription?: string
+  errorId?: string
 }
 
 export type OAuthActionTypes =
@@ -54,7 +56,7 @@ export function authorizationRequest(
 ): OAuthActionTypes {
   return {
     type: AUTHORIZATION_REQUEST,
-    authorizationUrl: authorizationUrl,
+    authorizationUrl,
   }
 }
 
@@ -64,8 +66,8 @@ export function authorizationRequestSuccess(
 ): OAuthActionTypes {
   return {
     type: AUTHORIZATION_REQUEST_SUCCESS,
-    authorizationCode: authorizationCode,
-    state: state,
+    authorizationCode,
+    state,
   }
 }
 
@@ -76,8 +78,9 @@ export function authorizationRequestFailure(
 ): OAuthActionTypes {
   return {
     type: AUTHORIZATION_REQUEST_FAILURE,
-    errorCode: errorCode,
-    errorDescription: errorDescription,
+    errorCode,
+    errorDescription,
+    errorId,
   }
 }
 
@@ -95,10 +98,10 @@ export function tokenRequestSuccess(
 ): OAuthActionTypes {
   return {
     type: TOKEN_REQUEST_SUCCESS,
-    accessToken: accessToken,
-    expiresIn: expiresIn,
-    tokenType: tokenType,
-    refreshToken: refreshToken,
+    accessToken,
+    expiresIn,
+    tokenType,
+    refreshToken,
   }
 }
 
@@ -110,8 +113,9 @@ export function tokenRequestFailure(
 ): OAuthActionTypes {
   return {
     type: TOKEN_REQUEST_FAILURE,
-    errorCode: errorCode,
-    errorDescription: errorDescription,
-    errorUri: errorUri,
+    errorCode,
+    errorDescription,
+    errorUri,
+    errorId,
   }
 }
