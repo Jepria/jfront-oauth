@@ -35,6 +35,7 @@ export const OAuthReducer = (
       return {
         errorCode: action.errorCode,
         errorDescription: action.errorDescription,
+        errorId: action.errorId,
         isLoading: false,
       }
     }
@@ -60,6 +61,7 @@ export const OAuthReducer = (
         errorCode: action.errorCode,
         errorDescription: action.errorDescription,
         errorUri: action.errorUri,
+        errorId: action.errorId,
         isLoading: false,
       }
     }

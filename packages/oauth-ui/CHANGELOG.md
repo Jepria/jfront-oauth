@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.4](https://github.com/Jepria/jfront-oauth/compare/@jfront/oauth-ui@0.2.3...@jfront/oauth-ui@0.2.4) (2020-10-12)
+
+
+### Bug Fixes
+
+* error handling ([57ee37c](https://github.com/Jepria/jfront-oauth/commit/57ee37ca1daf736b235e08f8a8146b6cd13ae483))
+
+
+
+
+
 ## [0.2.3](https://github.com/Jepria/jfront-oauth/compare/@jfront/oauth-ui@0.2.2...@jfront/oauth-ui@0.2.3) (2020-10-12)
 
 

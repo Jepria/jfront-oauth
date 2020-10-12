@@ -1,6 +1,6 @@
 {
   "name": "@jfront/oauth-core",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "license": "Apache-2.0",
   "repository": "https://github.com/Jepria/jfront-oauth",
   "main": "dist/cjs/index.js",

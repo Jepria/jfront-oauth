@@ -23,4 +23,5 @@ export interface OAuthState {
   errorUri?: string
   errorDescription?: string
   errorCode?: string
+  errorId?: string
 }

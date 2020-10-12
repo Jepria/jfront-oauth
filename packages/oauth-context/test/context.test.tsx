@@ -56,6 +56,7 @@ it("Authorization request test", async () => {
     state: null,
     error: null,
     errorDescription: null,
+    errorId: null,
   })
 
   const storage = new TestStorage()
@@ -97,6 +98,7 @@ it("Token request test", async () => {
     state: "ad312243g24g42g42g24",
     error: null,
     errorDescription: null,
+    errorId: null,
   })
 
   const storage = new TestStorage({
