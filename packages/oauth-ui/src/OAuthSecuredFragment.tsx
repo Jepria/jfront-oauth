@@ -6,12 +6,12 @@ import { OAuthError } from "./OAuthError"
 export const OAuthSecuredFragment: React.FC = ({ children }) => {
   const { accessToken, isLoading, errorCode, errorDescription } = useOAuth()
 
-  if (isLoading) {
-    return <Loader title="OAuth" text="Загрузка, пожалуйста, подождите..." />
-  } else if (errorCode || errorDescription) {
+  if (errorCode || errorDescription) {
     return (
       <OAuthError errorCode={errorCode} errorDescription={errorDescription} />
     )
+  } else if (isLoading) {
+    return <Loader title="OAuth" text="Загрузка, пожалуйста, подождите..." />
   } else if (accessToken) {
     return <>{children}</>
   } else {
