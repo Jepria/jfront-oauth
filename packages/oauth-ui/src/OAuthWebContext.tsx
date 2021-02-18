@@ -49,7 +49,8 @@ export const OAuthWebContext: React.FC<OAuthWebContextProps> = ({
       authorizationCode: queryParams.get("code"),
       state: queryParams.get("state"),
       error: queryParams.get("error"),
-      errorDescription: queryParams.get("errorDescription"),
+      errorDescription: queryParams.get("error_description"),
+      errorId: queryParams.get("error_id"),
     }
   }
 

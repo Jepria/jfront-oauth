@@ -20,6 +20,7 @@ export interface OAuthQueryParams {
   state: string | null
   error: string | null
   errorDescription: string | null
+  errorId: string | null
 }
 
 export interface OAuthContextProps {
@@ -70,6 +71,7 @@ export const OAuthContextProvider: React.FC<OAuthContextProps> = ({
       errorUri,
       errorDescription,
       errorCode,
+      errorId,
     },
     dispatch,
   ] = useReducer(OAuthReducer, { isLoading: true })
@@ -142,7 +144,14 @@ export const OAuthContextProvider: React.FC<OAuthContextProps> = ({
           }
         })
         .catch((error) => {
-          dispatch(tokenRequestFailure(error.error, error.errorDescription))
+          dispatch(
+            tokenRequestFailure(
+              error.error,
+              error.errorUri,
+              error.errorDescription,
+              error.errorId,
+            ),
+          )
         })
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -158,6 +167,7 @@ export const OAuthContextProvider: React.FC<OAuthContextProps> = ({
             queryParams.errorDescription
               ? queryParams.errorDescription
               : undefined,
+            queryParams.errorId ? queryParams.errorId : undefined,
           ),
         )
         return
@@ -231,6 +241,7 @@ export const OAuthContextProvider: React.FC<OAuthContextProps> = ({
         errorUri,
         errorDescription,
         errorCode,
+        errorId,
         logout,
       }}
     >

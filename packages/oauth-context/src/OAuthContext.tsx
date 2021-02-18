@@ -11,6 +11,7 @@ export interface SecurityContext {
   errorUri?: string
   errorDescription?: string
   errorCode?: string
+  errorId?: string
 }
 
 /**

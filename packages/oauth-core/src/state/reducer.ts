@@ -28,14 +28,15 @@ export const OAuthReducer = (
       return {
         authorizationCode: action.authorizationCode,
         state: action.state,
-        isLoading: true,
+        isLoading: false,
       }
     }
     case AUTHORIZATION_REQUEST_FAILURE: {
       return {
         errorCode: action.errorCode,
         errorDescription: action.errorDescription,
-        isLoading: true,
+        errorId: action.errorId,
+        isLoading: false,
       }
     }
     case TOKEN_REQUEST: {
@@ -60,6 +61,7 @@ export const OAuthReducer = (
         errorCode: action.errorCode,
         errorDescription: action.errorDescription,
         errorUri: action.errorUri,
+        errorId: action.errorId,
         isLoading: false,
       }
     }

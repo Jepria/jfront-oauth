@@ -3,6 +3,49 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.9](https://github.com/Jepria/jfront-oauth/compare/@jfront/oauth-context@0.1.8...@jfront/oauth-context@0.1.9) (2020-10-12)
+
+
+### Bug Fixes
+
+* error handling ([57ee37c](https://github.com/Jepria/jfront-oauth/commit/57ee37ca1daf736b235e08f8a8146b6cd13ae483))
+
+
+
+
+
+## [0.1.8](https://github.com/Jepria/jfront-oauth/compare/@jfront/oauth-context@0.1.7...@jfront/oauth-context@0.1.8) (2020-10-12)
+
+**Note:** Version bump only for package @jfront/oauth-context
+
+
+
+
+
+## [0.1.7](https://github.com/Jepria/jfront-oauth/compare/@jfront/oauth-context@0.1.6...@jfront/oauth-context@0.1.7) (2020-10-08)
+
+**Note:** Version bump only for package @jfront/oauth-context
+
+
+
+
+
+## [0.1.6](https://github.com/Jepria/jfront-oauth/compare/@jfront/oauth-context@0.1.5...@jfront/oauth-context@0.1.6) (2020-10-08)
+
+**Note:** Version bump only for package @jfront/oauth-context
+
+
+
+
+
+## [0.1.5](https://github.com/Jepria/jfront-oauth/compare/@jfront/oauth-context@0.1.4...@jfront/oauth-context@0.1.5) (2020-10-08)
+
+**Note:** Version bump only for package @jfront/oauth-context
+
+
+
+
+
 ## [0.1.4](https://github.com/Jepria/jfront-oauth/compare/@jfront/oauth-context@0.1.3...@jfront/oauth-context@0.1.4) (2020-09-08)
 
 
