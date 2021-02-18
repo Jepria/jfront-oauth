@@ -6,7 +6,6 @@ export interface OAuthWebContextProps {
   clientId: string
   redirectUri: string
   oauthContextPath: string
-  configureAxios?: boolean
   axiosInstance?: AxiosInstance
 }
 
@@ -28,7 +27,6 @@ export const OAuthWebContext: React.FC<OAuthWebContextProps> = ({
   clientId,
   redirectUri,
   oauthContextPath,
-  configureAxios,
   axiosInstance,
   children,
 }) => {
@@ -69,7 +67,6 @@ export const OAuthWebContext: React.FC<OAuthWebContextProps> = ({
       redirectUri={redirectUri}
       oauthContextPath={oauthContextPath}
       axiosInstance={axiosInstance}
-      configureAxios={configureAxios}
       storage={window.sessionStorage}
       onLogout={onLogout}
     >
