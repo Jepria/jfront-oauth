@@ -10,15 +10,9 @@
   "dependencies": {
     "@jfront/oauth-core": "^0.1.2"
   },
-  "devDependencies": {
-    "@types/react": "^16.9.0",
-    "axios": "^0.19.2",
-    "react": "16.13.1",
-    "typescript": "^3.9.5"
-  },
   "peerDependencies": {
-    "axios": ">= 0.19.x",
-    "react": ">= 16.13.x"
+    "axios": ">= 0.21.1",
+    "react": ">= 17.0.1"
   },
   "publishConfig": {
     "access": "public"
