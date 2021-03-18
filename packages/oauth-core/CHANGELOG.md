@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/Jepria/jfront-oauth/compare/@jfront/oauth-core@0.1.2...@jfront/oauth-core@0.2.0) (2021-03-18)
+
+
+### chore
+
+* dependency update ([e025250](https://github.com/Jepria/jfront-oauth/commit/e02525006601a0d640c78339cbd942740e392334))
+
+
+### BREAKING CHANGES
+
+* react 17.0.1
+
+
+
+
+
 ## [0.1.2](https://github.com/Jepria/jfront-oauth/compare/@jfront/oauth-core@0.1.1...@jfront/oauth-core@0.1.2) (2020-10-12)
 
 

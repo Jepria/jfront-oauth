@@ -73,7 +73,6 @@ it("Authorization request test", async () => {
         clientId={"clientId"}
         redirectUri={"http://redirect"}
         oauthContextPath={"oauth"}
-        configureAxios={false}
         storage={storage}
       >
         <OAuthTestComponent>
@@ -129,7 +128,6 @@ it("Token request test", async () => {
         clientId={"clientId"}
         redirectUri={"http://redirect"}
         oauthContextPath={"oauth"}
-        configureAxios={false}
         storage={storage}
       >
         <OAuthTestComponent>

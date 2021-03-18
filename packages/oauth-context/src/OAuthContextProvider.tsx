@@ -34,7 +34,6 @@ export interface OAuthContextProps {
   clientId: string
   redirectUri: string
   oauthContextPath: string
-  configureAxios?: boolean
   axiosInstance?: AxiosInstance
 }
 
@@ -54,7 +53,6 @@ export const OAuthContextProvider: React.FC<OAuthContextProps> = ({
   clientId,
   redirectUri,
   oauthContextPath,
-  configureAxios,
   axiosInstance,
   children,
 }) => {
@@ -212,7 +210,7 @@ export const OAuthContextProvider: React.FC<OAuthContextProps> = ({
     onLogout(oauth.logout(getCurrentUrl()))
   }
 
-  if (configureAxios && axiosInstance && accessToken) {
+  if (axiosInstance && accessToken) {
     axiosInstance.defaults.headers["Authorization"] = `Bearer ${accessToken}`
     axiosInstance.interceptors.response.use(
       (response: AxiosResponse) => {
