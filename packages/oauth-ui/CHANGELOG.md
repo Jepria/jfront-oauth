@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/Jepria/jfront-oauth/compare/@jfront/oauth-ui@0.2.4...@jfront/oauth-ui@0.3.0) (2021-03-18)
+
+
+### chore
+
+* dependency update ([e025250](https://github.com/Jepria/jfront-oauth/commit/e02525006601a0d640c78339cbd942740e392334))
+
+
+### Features
+
+* configureAxios prop removed, axios will be configured if instance is passed to props ([13dcc01](https://github.com/Jepria/jfront-oauth/commit/13dcc0133d81af29ffb1641dc14956d766c77f12))
+
+
+### BREAKING CHANGES
+
+* react 17.0.1
+
+
+
+
+
 ## [0.2.4](https://github.com/Jepria/jfront-oauth/compare/@jfront/oauth-ui@0.2.3...@jfront/oauth-ui@0.2.4) (2020-10-12)
 
 

@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/Jepria/jfront-oauth/compare/@jfront/oauth-user@0.1.4...@jfront/oauth-user@0.2.0) (2021-03-18)
+
+
+### chore
+
+* dependency update ([e025250](https://github.com/Jepria/jfront-oauth/commit/e02525006601a0d640c78339cbd942740e392334))
+
+
+### BREAKING CHANGES
+
+* react 17.0.1
+
+
+
+
+
 ## [0.1.4](https://github.com/Jepria/jfront-oauth/compare/@jfront/oauth-user@0.1.3...@jfront/oauth-user@0.1.4) (2020-10-12)
 
 **Note:** Version bump only for package @jfront/oauth-user
