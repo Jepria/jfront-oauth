@@ -223,6 +223,7 @@ export const OAuthContextProvider: React.FC<OAuthContextProps> = ({
         if (401 === error?.response?.status) {
           authorize()
         }
+        return Promise.reject(error)
       },
     )
   }
