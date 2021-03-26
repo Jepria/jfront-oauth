@@ -1,6 +1,6 @@
 {
   "name": "@jfront/oauth-user",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "license": "Apache-2.0",
   "repository": "https://github.com/Jepria/jfront-oauth",
   "main": "dist/cjs/index.js",
@@ -8,7 +8,7 @@
   "types": "dist/types/index.d.ts",
   "typings": "dist/types/index.d.ts",
   "dependencies": {
-    "@jfront/oauth-context": "^0.2.0"
+    "@jfront/oauth-context": "^0.2.1"
   },
   "peerDependencies": {
     "axios": ">= 0.21.1",

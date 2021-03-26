@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.1](https://github.com/Jepria/jfront-oauth/compare/@jfront/oauth-context@0.2.0...@jfront/oauth-context@0.2.1) (2021-03-26)
+
+
+### Bug Fixes
+
+* response error interceptor ([abd6310](https://github.com/Jepria/jfront-oauth/commit/abd6310cd4240edb39d6174bd2f23af9303b73d0))
+
+
+
+
+
 # [0.2.0](https://github.com/Jepria/jfront-oauth/compare/@jfront/oauth-context@0.1.9...@jfront/oauth-context@0.2.0) (2021-03-18)
 
 
